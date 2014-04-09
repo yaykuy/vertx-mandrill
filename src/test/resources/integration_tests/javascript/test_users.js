@@ -23,15 +23,15 @@ var console = require("vertx/console");
 var eb = vertx.eventBus;
 
 function testInfo() {
-  eb.send('mandrill.users.info', {}, function(reply) {
-      //console.log("testInfo reply:"+JSON.stringify(reply,null,4));
+  eb.send('test_mandrill.users.info', {}, function(reply) {
+      console.log("testInfo reply:"+JSON.stringify(reply,null,4));
       vassert.assertEquals('ok', reply.status);
       vassert.testComplete();
     });
 }
 
 function testPing2() {
-  eb.send('mandrill.users.ping2', {}, function(reply) {
+  eb.send('test_mandrill.users.ping2', {}, function(reply) {
       //console.log("testPing2 reply:"+JSON.stringify(reply,null,4));
       vassert.assertEquals('ok', reply.status);
       vassert.testComplete();
@@ -39,7 +39,7 @@ function testPing2() {
 }
 
 function testSenders() {
-  eb.send('mandrill.users.senders', {}, function(reply) {
+  eb.send('test_mandrill.users.senders', {}, function(reply) {
       //console.log("testSenders reply:"+JSON.stringify(reply,null,4));
       vassert.assertEquals('ok', reply.status);
       vassert.testComplete();
@@ -48,7 +48,7 @@ function testSenders() {
 
 var script = this;
 
-var mandrillUserConfig = { "mandrill_apikey": "9pH36EUE5PXKpirySqzCWw" }
+var mandrillUserConfig = { "address": "test_mandrill", "mandrill_apikey": "xYYL34Sv1CfrnOgmnbj9Tw" }
 container.deployModule(java.lang.System.getProperty("vertx.modulename"), mandrillUserConfig, 1, function(err, depID) {
     vertxTests.startTests(script);
 });

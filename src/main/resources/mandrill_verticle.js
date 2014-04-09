@@ -14,7 +14,13 @@ var client = vertx.createHttpClient()
   .trustAll(true);
 var endpoint = "/api/1.0";
 
-var busDir="mandrill"
+var busDir;
+if(config.address){
+	busDir=config.address;
+}else{
+	busDir="mandrill"
+}
+
 
 function reply(replier,status,data){
 	return replier({

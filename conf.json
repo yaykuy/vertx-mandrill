@@ -1,4 +1,6 @@
 // Mandrill Module JSON config file
+//Using account test@yaykuy.cl (for testing , doh!)
 {
+  "address": "mandrill",
   "mandrill_apikey": "9pH36EUE5PXKpirySqzCWw"
 }
