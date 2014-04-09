@@ -25,7 +25,7 @@ For example:
 
     {
         "address": "mandrill",
-  		"mandrill_apikey": "9pH36EUE5PXKpirySqzCWw"
+  		"mandrill_apikey": "xYYL34Sv1CfrnOgmnbj9Tw"
     }        
     
 Let's take a look at each field in turn:
