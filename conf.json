@@ -1,5 +1,4 @@
-// Example JSON config file
-
+// Mandrill Module JSON config file
 {
-  "foo": "bar"
+  "mandrill_apikey": "9pH36EUE5PXKpirySqzCWw"
 }
