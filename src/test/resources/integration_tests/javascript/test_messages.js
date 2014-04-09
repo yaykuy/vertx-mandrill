@@ -22,33 +22,40 @@ var console = require("vertx/console");
 
 var eb = vertx.eventBus;
 
-function testInfo() {
-  eb.send('test_mandrill.users.info', {}, function(reply) {
-      //console.log("testInfo reply:"+JSON.stringify(reply,null,4));
+function testSendEmpty() {
+  eb.send('test_mandrill.messages.send', {}, function(reply) {
+      console.log("testSendEmpty reply:"+JSON.stringify(reply,null,4));
+      vassert.assertEquals('error', reply.status);
+      vassert.assertEquals('Incorrect value for `message`', reply.data);
+      vassert.testComplete();
+    });
+}
+
+function testSend0() {
+  var m={
+    text: 'Probando 123 BODY',
+    subject: 'Probando 123 (Subject)',
+    from_email: 'test@yaykuy.cl',
+    to: [
+      {email: 'ajunge@totexa.cl', 'name': 'Andres Junge'}
+    ]
+  }
+  var toMandrill={
+    message: m
+  }
+
+  eb.send('test_mandrill.messages.send', toMandrill, function(reply) {
+      console.log("testSend0 reply:"+JSON.stringify(reply,null,4));
       vassert.assertEquals('ok', reply.status);
       vassert.testComplete();
     });
 }
 
-function testPing2() {
-  eb.send('test_mandrill.users.ping2', {}, function(reply) {
-      //console.log("testPing2 reply:"+JSON.stringify(reply,null,4));
-      vassert.assertEquals('ok', reply.status);
-      vassert.testComplete();
-    });
-}
 
-function testSenders() {
-  eb.send('test_mandrill.users.senders', {}, function(reply) {
-      //console.log("testSenders reply:"+JSON.stringify(reply,null,4));
-      vassert.assertEquals('ok', reply.status);
-      vassert.testComplete();
-    });
-}
 
 var script = this;
 
-var mandrillUserConfig = { "address": "test_mandrill", "mandrill_apikey": "xYYL34Sv1CfrnOgmnbj9Tw" }
-container.deployModule(java.lang.System.getProperty("vertx.modulename"), mandrillUserConfig, 1, function(err, depID) {
+var mandrillConfig = { "address": "test_mandrill", "mandrill_apikey": "xYYL34Sv1CfrnOgmnbj9Tw" }
+container.deployModule(java.lang.System.getProperty("vertx.modulename"), mandrillConfig, 1, function(err, depID) {
     vertxTests.startTests(script);
 });
