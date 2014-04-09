@@ -1,7 +1,4 @@
-vertx-mandrill
-==============
-
-# Mandrill API access
+# vertx-mandrill :: Mandrill API access
 
 ## Dependencies
 
