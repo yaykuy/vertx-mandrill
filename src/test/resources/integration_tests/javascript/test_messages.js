@@ -31,7 +31,7 @@ function testSendEmpty() {
     });
 }
 
-function testSend0() {
+function _testSend0() {
   var m={
     text: 'Probando 123 BODY',
     subject: 'Probando 123 (Subject)',
@@ -51,6 +51,26 @@ function testSend0() {
     });
 }
 
+function testSend0_async() {
+  var m={
+    text: 'Probando 123 async BODY',
+    subject: 'Probando 123 async (Subject)',
+    from_email: 'test@yaykuy.cl',
+    to: [
+      {email: 'ajunge@totexa.cl', 'name': 'Andres Junge'}
+    ]
+  }
+  var toMandrill={
+    message: m,
+    async: true
+  }
+
+  eb.send('test_mandrill.messages.send', toMandrill, function(reply) {
+      console.log("testSend0 reply:"+JSON.stringify(reply,null,4));
+      vassert.assertEquals('ok', reply.status);
+      vassert.testComplete();
+    });
+}
 
 
 var script = this;
