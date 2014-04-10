@@ -31,13 +31,13 @@ function testSendEmpty() {
     });
 }
 
-function _testSend0() {
+function testSend0() {
   var m={
     text: 'Probando 123 BODY',
     subject: 'Probando 123 (Subject)',
     from_email: 'test@yaykuy.cl',
     to: [
-      {email: 'ajunge@totexa.cl', 'name': 'Andres Junge'}
+      {email: 'ajunge@gmail.com', 'name': 'Andres Junge'}
     ]
   }
   var toMandrill={
@@ -51,22 +51,24 @@ function _testSend0() {
     });
 }
 
-function testSend0_async() {
+function testSendTemplate0() {
   var m={
-    text: 'Probando 123 async BODY',
-    subject: 'Probando 123 async (Subject)',
     from_email: 'test@yaykuy.cl',
     to: [
-      {email: 'ajunge@totexa.cl', 'name': 'Andres Junge'}
+      {email: 'ajunge@gmail.com', 'name': 'Andres Junge'}
+    ],
+    global_merge_vars: [
+      {name: "ESTADO",content: "bien"}
     ]
   }
   var toMandrill={
-    message: m,
-    async: true
+    template_name: 'test_template',
+    template_content: [{}],
+    message: m
   }
 
-  eb.send('test_mandrill.messages.send', toMandrill, function(reply) {
-      console.log("testSend0 reply:"+JSON.stringify(reply,null,4));
+  eb.send('test_mandrill.messages.send-template', toMandrill, function(reply) {
+      console.log("_testSendTemplate0 reply:"+JSON.stringify(reply,null,4));
       vassert.assertEquals('ok', reply.status);
       vassert.testComplete();
     });

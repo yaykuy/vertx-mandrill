@@ -37,4 +37,4 @@ Look at https://mandrillapp.com/api/docs/
 Implemented:
  
  * Users: Info, Ping2, Senders
- * Messages: Send
+ * Messages: Send, Send-Template
