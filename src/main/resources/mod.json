@@ -10,9 +10,9 @@
   "author": "Andres Junge",
 
   // Optional fields
-  "developers": ["Other Dev 1", "Other Dev 2"],
-  "keywords": ["gerbils", "cars", "cheese", "chocolate", "underpants", "herring"],
-  "homepage": "url to your project page",
+  "developers": ["Andres JUnge"],
+  "keywords": ["mandrill", "email", "mail", "sendmail"],
+  "homepage": "https://github.com/yaykuy/vertx-mandrill",
 
   "auto-redeploy": true
 
