@@ -10,7 +10,7 @@
   "author": "Andres Junge",
 
   // Optional fields
-  "developers": ["Andres JUnge"],
+  "developers": ["Andres Junge"],
   "keywords": ["mandrill", "email", "mail", "sendmail"],
   "homepage": "https://github.com/yaykuy/vertx-mandrill",
 
