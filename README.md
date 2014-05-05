@@ -38,3 +38,5 @@ Implemented:
  
  * Users: Info, Ping2, Senders
  * Messages: Send, Send-Template
+
+[![Build Status](https://travis-ci.org/yaykuy/vertx-mandrill.svg?branch=master)](https://travis-ci.org/yaykuy/vertx-mandrill)
